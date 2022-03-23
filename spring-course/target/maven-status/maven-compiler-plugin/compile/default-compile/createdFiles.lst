@@ -1,0 +1,7 @@
+com/example/test/XmlConfigTest.class
+com/example/api/PersonaServiceAPI.class
+com/example/App.class
+com/example/model/Persona.class
+com/example/test/JavaConfigTest.class
+com/example/impl/PersonaServiceImpl.class
+com/example/config/AppConfig.class
