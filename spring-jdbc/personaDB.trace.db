@@ -1,0 +1,6 @@
+2022-03-23 20:17:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM PERSONA \000d\000a\000d\000aDELETE [*]FROM persona WHERE ID > 2"
+Syntax error in SQL statement "SELECT * FROM PERSONA \000d\000a\000d\000aDELETE [*]FROM persona WHERE ID > 2"; SQL statement:
+SELECT * FROM PERSONA 
+
+DELETE FROM persona WHERE ID > 2 [42000-210]

@@ -4,12 +4,15 @@ import com.example.dao.api.PersonaDaoAPI;
 import com.example.dao.mapper.PersonaMapper;
 import com.example.model.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
@@ -63,5 +66,31 @@ public class PersonaDaoImpl implements PersonaDaoAPI {
         sql.append("SELECT * FROM persona");
 
         return jdbcTemplate.query(sql.toString(), new PersonaMapper());
+    }
+
+    @Override
+    public void guardar(final List<Persona> personas) {
+        StringBuilder sql = new StringBuilder(100);
+        sql.append("INSERT INTO persona");
+        sql.append(" VALUES (?,?,?,?,?)");
+
+        jdbcTemplate.batchUpdate(sql.toString(), new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                Persona persona = personas.get(i);
+                ps.setLong(1, persona.getId());
+                ps.setString(2, persona.getNombre());
+                ps.setString(3, persona.getApellido());
+                ps.setString(4, persona.getDireccion());
+                ps.setString(5, persona.getTelefono());
+            }
+
+            @Override
+            public int getBatchSize() {
+                // Corresponde al número de veces que se ejecuta la instrucción
+                return personas.size();
+            };
+        });
+
     }
 }

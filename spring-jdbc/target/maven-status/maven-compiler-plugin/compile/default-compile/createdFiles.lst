@@ -3,4 +3,5 @@ com/example/App.class
 com/example/model/Persona.class
 com/example/dao/api/PersonaDaoAPI.class
 com/example/main/MainApplication.class
+com/example/dao/impl/PersonaDaoImpl$1.class
 com/example/dao/mapper/PersonaMapper.class

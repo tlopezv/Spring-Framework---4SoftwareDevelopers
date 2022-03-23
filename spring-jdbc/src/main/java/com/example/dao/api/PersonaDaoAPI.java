@@ -9,4 +9,6 @@ public interface PersonaDaoAPI {
     void guardar(Persona persona);
 
     List<Persona> getPersonas();
+
+    void guardar(List<Persona> personas);
 }
