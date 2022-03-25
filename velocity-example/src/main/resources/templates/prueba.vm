@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    ## Parámetro título de la página
+    <title>${title}</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <div>
+        #*
+            foreach de la lista de datos enviado desde Java
+        *#
+        #foreach ($persona in $personas)
+            <p>$persona.getNombre() -  $persona.getEdad()</p>
+        #end
+    </div>
+</body>
+</html>
